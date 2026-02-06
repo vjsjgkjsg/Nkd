@@ -1,0 +1,21 @@
+/* === АДАПТИВ === */
+@media (max-width: 480px) {
+    .container { padding: 15px; }
+    .amount { font-size: 36px; }
+    .coin-btn { width: 240px; height: 240px; }
+    .boosters { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr; }
+    .nav-btn { padding: 6px 4px; }
+    .nav-btn svg { width: 20px; height: 20px; }
+    .nav-btn span { font-size: 9px; }
+    .upgrade { flex-direction: column; text-align: center; }
+    .upgrade-header { flex-direction: column; gap: 8px; }
+    .modal-content { padding: 30px 20px; }
+    .modal-reward { font-size: 36px; }
+}
+
+@media (max-width: 360px) {
+    .coin-btn { width: 200px; height: 200px; }
+    .amount { font-size: 32px; }
+    .nav-btn span { display: none; }
+}

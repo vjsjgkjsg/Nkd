@@ -1,0 +1,65 @@
+/* === КОМПОНЕНТЫ === */
+
+/* Улучшения */
+.upgrade { background: var(--card); padding: 18px; border-radius: 16px; margin-bottom: 12px;
+           display: flex; align-items: center; gap: 16px; cursor: pointer; transition: all 0.3s;
+           border: 2px solid var(--border); }
+.upgrade:hover { transform: translateX(4px); border-color: var(--primary); }
+.upgrade.locked { opacity: 0.5; cursor: not-allowed; }
+.upgrade.locked:hover { transform: none; border-color: var(--border); }
+.upgrade.max { border-color: var(--success); background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), var(--card)); }
+.upgrade-icon { width: 64px; height: 64px; border-radius: 12px;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; }
+.upgrade-info { flex: 1; }
+.upgrade-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.upgrade-name { font-weight: 700; font-size: 16px; }
+.upgrade-badge { background: var(--primary); color: white; padding: 4px 10px;
+                 border-radius: 12px; font-size: 11px; font-weight: 700; }
+.upgrade-badge.max { background: var(--success); }
+.upgrade-desc { font-size: 13px; color: #94a3b8; margin-bottom: 8px; }
+.upgrade-stats { display: flex; justify-content: space-between; font-size: 13px; }
+.upgrade-profit { color: var(--success); font-weight: 600; }
+.upgrade-cost { color: var(--warning); font-weight: 700; font-size: 14px; }
+.upgrade-cost.ok { color: var(--success); }
+
+/* Квесты */
+.quest { background: var(--card); padding: 18px; border-radius: 16px; margin-bottom: 12px;
+         border: 2px solid var(--border); display: flex; align-items: center; gap: 16px; }
+.quest.done { border-color: var(--success); background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), var(--card)); }
+.quest-icon { width: 56px; height: 56px; border-radius: 12px;
+              background: linear-gradient(135deg, var(--primary), var(--secondary));
+              display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+.quest-info { flex: 1; }
+.quest-name { font-weight: 700; margin-bottom: 4px; }
+.quest-desc { font-size: 13px; color: #94a3b8; }
+.quest-reward { font-weight: 700; color: var(--warning); font-size: 16px; }
+.quest-reward.done { color: var(--success); }
+
+/* Социальные задания */
+.task-card { background: var(--card); padding: 16px; border-radius: 16px; margin-bottom: 12px;
+             border: 2px solid var(--border); display: flex; align-items: center; gap: 12px;
+             transition: all 0.3s; }
+.task-card:not(.done) { cursor: pointer; }
+.task-card:not(.done):hover { transform: translateX(4px); border-color: var(--primary); }
+.task-card.done { border-color: var(--success); background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), var(--card)); }
+.task-icon { width: 48px; height: 48px; border-radius: 12px;
+             background: linear-gradient(135deg, var(--primary), var(--secondary));
+             display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.task-info { flex: 1; }
+.task-name { font-weight: 700; margin-bottom: 2px; font-size: 14px; }
+.task-desc { font-size: 12px; color: #94a3b8; }
+.task-reward { font-weight: 700; color: var(--warning); font-size: 14px; }
+.task-reward.done { color: var(--success); }
+
+/* Лидерборд */
+.leaderboard-item { background: var(--card); padding: 16px; border-radius: 16px; margin-bottom: 12px;
+                    border: 2px solid var(--border); display: flex; align-items: center; gap: 12px; }
+.leaderboard-item.me { border-color: var(--primary); background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), var(--card)); }
+.lb-position { width: 40px; font-size: 20px; font-weight: 900; text-align: center; flex-shrink: 0; }
+.lb-rank { width: 40px; font-size: 28px; text-align: center; flex-shrink: 0; }
+.lb-info { flex: 1; }
+.lb-name { font-weight: 700; margin-bottom: 4px; }
+.lb-stats { font-size: 12px; color: #94a3b8; display: flex; gap: 8px; }
+.lb-earned { text-align: right; flex-shrink: 0; }
+.lb-earned > div:first-child { font-size: 18px; font-weight: 700; color: var(--warning); }

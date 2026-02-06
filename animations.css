@@ -1,0 +1,58 @@
+/* === АНИМАЦИИ === */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes glow { 0%, 100% { box-shadow: 0 0 20px var(--primary); } 50% { box-shadow: 0 0 40px var(--primary); } }
+@keyframes shine { from { transform: translateX(-100%) rotate(45deg); } to { transform: translateX(100%) rotate(45deg); } }
+@keyframes coinShine { from { transform: translateX(-100%) rotate(45deg); } to { transform: translateX(100%) rotate(45deg); } }
+@keyframes comboPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+@keyframes modalBounce { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+@keyframes floatUp { 
+    0% { opacity: 1; transform: translateY(0) scale(0.8); }
+    100% { opacity: 0; transform: translateY(-150px) scale(1.5); } 
+}
+
+/* Применение анимаций */
+.screen.active { animation: fadeIn 0.3s; }
+.badge.show { animation: pulse 1s infinite; }
+.booster.active { animation: glow 1s infinite; }
+.balance-card::before { animation: shine 3s infinite; }
+.coin-shine { animation: coinShine 3s infinite; }
+.combo-card.active { animation: comboPulse 0.5s infinite; }
+.modal-icon { animation: modalBounce 0.5s; }
+.floating { animation: floatUp 1.2s forwards; }
+
+/* Улучшенная анимация клика монеты */
+.coin-btn.clicked { animation: coinClick 0.3s; }
+@keyframes coinClick {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(0.92) rotate(-5deg); }
+    75% { transform: scale(0.92) rotate(5deg); }
+}
+
+/* Анимация прогресс-бара */
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: progressShine 2s infinite;
+}
+@keyframes progressShine {
+    from { left: -100%; }
+    to { left: 200%; }
+}
+
+.progress-bar { position: relative; overflow: hidden; }
+
+/* Плавающие числа */
+.floating {
+    position: fixed;
+    font-size: 36px;
+    font-weight: 900;
+    pointer-events: none;
+    z-index: 9999;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}

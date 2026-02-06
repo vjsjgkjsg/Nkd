@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0f172a">
+    <title>💎 NEO KLIN - Заработай!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="mobile.css">
+    <style>
+        /* === СТИЛИ ДЛЯ РЕГИСТРАЦИИ === */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 100000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .welcome-card {
+            background: linear-gradient(135deg, var(--card), #334155);
+            padding: 40px;
+            border-radius: 24px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border: 2px solid var(--border);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+            animation: welcomeAppear 0.5s;
+        }
+        @keyframes welcomeAppear {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .welcome-title {
+            font-size: 64px;
+            margin-bottom: 20px;
+            animation: welcomeBounce 1s infinite;
+        }
+        @keyframes welcomeBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .welcome-subtitle {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .welcome-text {
+            color: #94a3b8;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 20px 0 30px 0;
+        }
+        .avatar-option {
+            font-size: 32px;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            background: rgba(51, 65, 85, 0.5);
+        }
+        .avatar-option:hover {
+            transform: scale(1.1);
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+        .avatar-option.selected {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+        .name-input {
+            width: 100%;
+            padding: 16px;
+            background: #334155;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .name-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+        .start-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 900;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.6);
+        }
+        .start-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="effects.css">
+</head>
+<body>
+    <!-- ЭКРАН РЕГИСТРАЦИИ (показывается только при первом запуске) -->
+    <div class="welcome-overlay" id="welcomeScreen">
+        <div class="welcome-card">
+            <div class="welcome-title">💎</div>
+            <h1 class="welcome-subtitle">Добро пожаловать в NEO KLIN!</h1>
+            <p class="welcome-text">Кликай, зарабатывай и выводи реальные деньги!<br>Выбери аватар и придумай имя</p>
+            
+            <div class="avatar-grid" id="avatarGrid">
+                <!-- Аватары добавятся через JS -->
+            </div>
+            
+            <input type="text" 
+                   class="name-input" 
+                   id="nameInput" 
+                   placeholder="Введи своё имя..." 
+                   maxlength="20"
+                   autocomplete="off">
+            
+            <button class="start-btn" id="startGameBtn">
+                🚀 Начать игру!
+            </button>
+        </div>
+    </div>
+
+    <div class="animated-bg"><canvas id="particleCanvas"></canvas></div>
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="effects.css">
+</head>
+<body>
+    <div class="animated-bg"><canvas id="particleCanvas"></canvas></div>
+    
+    <nav class="bottom-nav">
+        <button class="nav-btn active" data-screen="tap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+            <span>Кликер</span>
+        </button>
+        <button class="nav-btn" data-screen="shop">
+            <div class="badge" id="shopBadge"></div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+            </svg>
+            <span>Магазин</span>
+        </button>
+        <button class="nav-btn" data-screen="bonus">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6"/>
+                <polyline points="12 2 12 12"/><path d="M8 8l4-4 4 4"/>
+            </svg>
+            <span>Бонусы</span>
+        </button>
+        <button class="nav-btn" data-screen="social">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <span>Друзья</span>
+        </button>
+        <button class="nav-btn" data-screen="leaderboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+            <span>Рейтинг</span>
+        </button>
+        <button class="nav-btn" data-screen="quests">
+            <div class="badge" id="questBadge"></div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+            <span>Задания</span>
+        </button>
+        <button class="nav-btn" data-screen="wallet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+            <span>Вывод</span>
+        </button>
+    </nav>
+
+    <div class="container">
+        <!-- ЭКРАН: КЛИКЕР -->
+        <div class="screen active" id="tap-screen">
+            <div class="header">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32">
+                        <circle cx="16" cy="16" r="14" fill="url(#g1)"/>
+                        <text x="16" y="22" text-anchor="middle" fill="#fff" font-size="16" font-weight="900">NK</text>
+                        <defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#f59e0b"/>
+                        </linearGradient></defs>
+                    </svg>
+                    <h1>NEO KLIN</h1>
+                </div>
+                <div class="level"><span>⭐</span> <span id="userLevel">1</span></div>
+            </div>
+
+            <div class="balance-card">
+                <div class="label">Ваш баланс</div>
+                <div class="amount" id="balance">0</div>
+                <div class="tenge">≈ <span id="balanceTenge">0</span> ₸</div>
+            </div>
+
+            <div class="card">
+                <div class="progress-header">
+                    <span>Уровень <span id="currentLevel">1</span></span>
+                    <span><span id="levelProgress">0</span>/<span id="levelTarget">1000</span></span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="levelProgressBar"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="progress-header">
+                    <div><span>⚡</span> <span id="energyText">1000/1000</span></div>
+                    <span>+<span id="regenRate">1</span>/сек</span>
+                </div>
+                <div class="progress-container">
+                    <div class="energy-bar" id="energyBar"></div>
+                </div>
+            </div>
+
+            <div class="combo-card" id="comboCard">
+                <div class="combo-mult">🔥 x<span id="comboMultiplier">2</span></div>
+                <div>КОМБО АКТИВНО!</div>
+            </div>
+
+            <div class="tap-zone">
+                <button class="coin-btn" id="coinBtn">
+                    <div class="coin-shine"></div>
+                    <svg viewBox="0 0 100 100">
+                        <defs>
+                            <radialGradient id="cg"><stop offset="0%" stop-color="#fbbf24"/>
+                                <stop offset="50%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#d97706"/>
+                            </radialGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="45" fill="url(#cg)"/>
+                        <circle cx="50" cy="50" r="38" fill="none" stroke="#fbbf24" stroke-width="2" opacity="0.5"/>
+                        <text x="50" y="65" text-anchor="middle" font-size="36" fill="#fff">💰</text>
+                    </svg>
+                </button>
+                <div class="tap-power">+<span id="tapPower">1</span> за клик</div>
+            </div>
+
+            <div class="section">
+                <h3>🚀 Бустеры</h3>
+                <div class="boosters" id="boostersGrid"></div>
+            </div>
+
+            <div class="stats">
+                <div class="stat"><div id="totalClicks">0</div><div>Кликов</div></div>
+                <div class="stat"><div id="clicksPerSec">0</div><div>Кликов/сек</div></div>
+                <div class="stat"><div id="autoIncome">0</div><div>Доход/час</div></div>
+                <div class="stat"><div id="totalEarned">0</div><div>Всего</div></div>
+            </div>
+        </div>
+
+                <!-- ЭКРАН: МАГАЗИН С ВКЛАДКАМИ -->
+        <div class="screen" id="shop-screen">
+            <h2>🛍️ Магазин</h2>
+            
+            <!-- ВКЛАДКИ -->
+            <div class="shop-tabs">
+                <button class="shop-tab active" data-tab="upgrades">⬆️ Улучшения</button>
+                <button class="shop-tab" data-tab="boosters">🚀 Бустеры</button>
+                <button class="shop-tab" data-tab="skins">🎨 Скины</button>
+                <button class="shop-tab" data-tab="pets">🐾 Питомцы</button>
+            </div>
+            
+            <!-- КОНТЕНТ ВКЛАДОК -->
+            <div class="shop-content">
+                <!-- Улучшения -->
+                <div class="shop-tab-content active" id="tab-upgrades">
+                    <div id="upgradesContainer"></div>
+                </div>
+                
+                <!-- Бустеры -->
+                <div class="shop-tab-content" id="tab-boosters">
+                    <div id="boostersShopContainer"></div>
+                </div>
+                
+                <!-- Скины -->
+                <div class="shop-tab-content" id="tab-skins">
+                    <h3 style="margin-bottom:15px">🎨 Скины монет</h3>
+                    <p style="color:#94a3b8;margin-bottom:20px">Собирай уникальные скины от Common до Ultimate!</p>
+                    <div id="skinsContainer" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px"></div>
+                </div>
+                
+                <!-- Питомцы -->
+                <div class="shop-tab-content" id="tab-pets">
+                    <h3 style="margin-bottom:15px">🐾 Питомцы-помощники</h3>
+                    <p style="color:#94a3b8;margin-bottom:20px">Покупай и прокачивай питомцев для бонусов!</p>
+                    <div id="petsContainer"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ЭКРАН: БОНУСЫ -->
+        <div class="screen" id="bonus-screen">
+            <h2>🎁 Бонусы</h2>
+            <div class="card">
+                <h3>⏰ Ежечасный бонус</h3>
+                <p>Следующий через: <span id="hourlyTimer">59:59</span></p>
+                <button class="btn" id="hourlyBtn">Забрать</button>
+            </div>
+            <div class="card">
+                <h3>📅 Ежедневная награда</h3>
+                <p>День <span id="dailyDay">1</span> из 7</p>
+                <div style="font-size:24px;font-weight:900;color:var(--warning);margin:12px 0">
+                    +<span id="dailyReward">1000</span> NK
+                </div>
+                <button class="btn" id="dailyBtn">Забрать</button>
+            </div>
+        </div>
+
+        <!-- ЭКРАН: СОЦИАЛЬНЫЕ ЗАДАНИЯ -->
+        <div class="screen" id="social-screen">
+            <h2>👥 Пригласи друзей</h2>
+            <div class="card">
+                <h3>🔗 Реферальная ссылка</h3>
+                <div class="referral-link">
+                    <input type="text" id="refLink" readonly>
+                    <button class="btn-copy" id="copyRefBtn">📋</button>
+                </div>
+                <button class="btn" id="shareRefBtn" style="margin-top:12px">📤 Поделиться</button>
+                <div class="divider"></div>
+                <div style="display:flex;justify-content:space-between;font-size:14px">
+                    <span>Приглашено друзей:</span>
+                    <span style="font-weight:700;color:var(--success)"><span id="refCount">0</span> чел.</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;font-size:14px;margin-top:8px">
+                    <span>Заработано с рефералов:</span>
+                    <span style="font-weight:700;color:var(--warning)"><span id="refEarned">0</span> NK</span>
+                </div>
+            </div>
+
+            <h3 style="margin-top:20px">📱 Социальные задания</h3>
+            <div id="socialTasksContainer"></div>
+        </div>
+
+        <!-- ЭКРАН: ЛИДЕРБОРД -->
+        <div class="screen" id="leaderboard-screen">
+            <h2>🏆 Таблица лидеров</h2>
+            <div class="card">
+                <p id="myPosition" style="text-align:center;font-size:14px;color:var(--text-secondary)">Загрузка...</p>
+            </div>
+            <div id="leaderboardContainer"></div>
+        </div>
+
+        <!-- ЭКРАН: ЗАДАНИЯ -->
+        <div class="screen" id="quests-screen">
+            <h2>🎯 Достижения</h2>
+            <div id="questsContainer"></div>
+        </div>
+
+        <!-- ЭКРАН: ВЫВОД -->
+        <div class="screen" id="wallet-screen">
+            <h2>💰 Вывод</h2>
+            <div class="withdraw-balance">
+                <div>Доступно к выводу</div>
+                <div id="withdrawTenge">0 ₸</div>
+                <div>(<span id="withdrawNK">0</span> NK)</div>
+            </div>
+            <div class="card">
+                <div class="info-row"><span>Минимум:</span><span>500 ₸</span></div>
+                <div class="info-row"><span>Курс:</span><span>10M NK = 500₸</span></div>
+                <div class="info-row"><span>Обработка:</span><span>До 24ч</span></div>
+            </div>
+            <div class="card">
+                <div class="form-group">
+                    <label>Способ</label>
+                    <select class="input" id="withdrawMethod">
+                        <option value="kaspi">Kaspi</option>
+                        <option value="phone">Телефон</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Номер</label>
+                    <input type="text" class="input" id="withdrawNumber" placeholder="+7 (___) ___-__-__">
+                </div>
+                <div class="form-group">
+                    <label>Сумма (₸)</label>
+                    <input type="number" class="input" id="withdrawAmount" placeholder="500" min="500">
+                </div>
+                <button class="btn" id="withdrawBtn">Подать заявку</button>
+            </div>
+            <div class="card">
+                <h3>📋 История</h3>
+                <div id="historyList"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-icon" id="modalIcon">🎉</div>
+            <h2 id="modalTitle">Поздравляем!</h2>
+            <p id="modalDesc">Вы получили награду</p>
+            <div class="modal-reward" id="modalReward">+1000</div>
+            <button class="btn" id="modalBtn">Забрать!</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="config.js"></script>
+    <script src="utils.js"></script>
+    <script src="storage.js"></script>
+    <script src="audio.js"></script>
+    <script src="social.js"></script>
+    <script src="leaderboard.js"></script>
+    <script src="notifications.js"></script>
+    <script src="game.js"></script>
+    <script src="ui.js"></script>
+    <script>
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', () => {
+            window.game = new Game();
+            window.ui.init();
+            console.log('💎 NEO KLIN ULTIMATE v5.0');
+            console.log('Debug: window.game');
+        });
+    </script>
+        <script src="sounds.js"></script>
+    <script src="pets.js"></script>
+    <script src="skins.js"></script>
+    <script src="minigames.js"></script>
+    <script src="statistics.js"></script>
+    <script src="dailytasks.js"></script>
+    <script src="welcome.js"></script>
+</body>
+</html>
+
+        <!-- ЭКРАН: ПИТОМЦЫ -->
+        <div class="screen" id="pets-screen">
+            <h2>🐾 Питомцы</h2>
+            <div id="petsContainer"></div>
+        </div>
+
+        <!-- ЭКРАН: СКИНЫ -->
+        <div class="screen" id="skins-screen">
+            <h2>🎨 Скины монет</h2>
+            <div id="skinsContainer" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:15px;"></div>
+        </div>
+
+        <!-- ЭКРАН: МИНИ-ИГРЫ -->
+        <div class="screen" id="games-screen">
+            <h2>🎰 Мини-игры</h2>
+            <div class="card">
+                <h3>🎡 Колесо фортуны</h3>
+                <p>Стоимость: 1000 NK</p>
+                <button class="btn" onclick="window.minigamesManager.spinWheel()">Крутить!</button>
+            </div>
+            <div class="card">
+                <h3>🎰 Слоты</h3>
+                <p>Стоимость: 500 NK</p>
+                <button class="btn" onclick="window.minigamesManager.playSlots()">Играть!</button>
+            </div>
+            <div class="card">
+                <h3>🎲 Кости</h3>
+                <p>Стоимость: 250 NK</p>
+                <button class="btn" onclick="window.minigamesManager.rollDice()">Бросить!</button>
+            </div>
+            <div class="card">
+                <h3>🪙 Монетка</h3>
+                <p>Стоимость: 100 NK</p>
+                <button class="btn" onclick="window.minigamesManager.flipCoin()">Подбросить!</button>
+            </div>
+        </div>
+
+        <!-- ЭКРАН: СТАТИСТИКА -->
+        <div class="screen" id="stats-screen">
+            <h2>📊 Статистика</h2>
+            <div id="statsContainer"></div>
+        </div>
+
+        <!-- ЭКРАН: ЕЖЕДНЕВНЫЕ ЗАДАНИЯ -->
+        <div class="screen" id="daily-screen">
+            <h2>📅 Ежедневные задания</h2>
+            <div id="dailyTasksContainer"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-icon" id="modalIcon">🎉</div>
+            <h2 id="modalTitle">Поздравляем!</h2>
+            <p id="modalDesc">Вы получили награду</p>
+            <div class="modal-reward" id="modalReward">+1000</div>
+            <button class="btn" id="modalBtn">Забрать!</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <!-- ВСЕ СКРИПТЫ ПОДКЛЮЧАЮТСЯ -->
+    <script src="config.js"></script>
+    <script src="utils.js"></script>
+    <script src="storage.js"></script>
+    <script src="audio.js"></script>
+    <script src="social.js"></script>
+    <script src="leaderboard.js"></script>
+    <script src="notifications.js"></script>
+    <script src="game.js"></script>
+    <script src="ui.js"></script>
+    <script src="sounds.js"></script>
+    <script src="pets.js"></script>
+    <script src="skins.js"></script>
+    <script src="minigames.js"></script>
+    <script src="statistics.js"></script>
+    <script src="dailytasks.js"></script>
+    <script src="welcome.js"></script>
+</body>
+</html>
+
+    <!-- ДОПОЛНИТЕЛЬНЫЕ МОДУЛИ -->
+    <script src="pets.js"></script>
+    <script src="skins.js"></script>
+    <script src="minigames.js"></script>
+    <script src="statistics.js"></script>
+    <script src="dailytasks.js"></script>
+    <script src="sounds.js"></script>
+    
+    <!-- ИНИЦИАЛИЗАЦИЯ ВСЕХ СИСТЕМ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🚀 Initializing all systems...');
+            
+            // Инициализация менеджеров
+            if (window.petsManager) window.petsManager.init();
+            if (window.skinsManager) window.skinsManager.init();
+            if (window.statisticsManager) window.statisticsManager.increment('sessionsCount', 1);
+            if (window.dailyTasksManager) window.dailyTasksManager.init();
+            
+            console.log('✅ All systems initialized!');
+            console.log('🎮 NEO KLIN ULTIMATE ready!');
+        });
+    </script>

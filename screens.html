@@ -1,0 +1,53 @@
+<!-- ДОПОЛНИТЕЛЬНЫЕ ЭКРАНЫ -->
+
+<!-- Экран питомцев -->
+<div class="screen" id="pets-screen">
+    <h2>🐾 Питомцы</h2>
+    <p style="color:#94a3b8;margin-bottom:20px">Покупайте и прокачивайте питомцев для получения бонусов!</p>
+    <div id="petsContainer"></div>
+</div>
+
+<!-- Экран скинов -->
+<div class="screen" id="skins-screen">
+    <h2>🎨 Скины монет</h2>
+    <p style="color:#94a3b8;margin-bottom:20px">Собирайте уникальные скины от Common до Ultimate!</p>
+    <div id="skinsContainer" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:15px"></div>
+</div>
+
+<!-- Экран мини-игр -->
+<div class="screen" id="minigames-screen">
+    <h2>🎰 Мини-игры</h2>
+    <div class="card">
+        <h3>🎰 Колесо фортуны</h3>
+        <p>Стоимость: 1000 NK</p>
+        <button class="btn" onclick="window.minigamesManager.spinWheel()">Крутить!</button>
+    </div>
+    <div class="card">
+        <h3>🎰 Слоты</h3>
+        <p>Стоимость: 500 NK</p>
+        <button class="btn" onclick="window.minigamesManager.playSlots()">Играть!</button>
+    </div>
+    <div class="card">
+        <h3>🎲 Кости</h3>
+        <p>Стоимость: 250 NK</p>
+        <button class="btn" onclick="window.minigamesManager.rollDice()">Бросить!</button>
+    </div>
+    <div class="card">
+        <h3>🪙 Монетка</h3>
+        <p>Стоимость: 100 NK</p>
+        <button class="btn" onclick="window.minigamesManager.flipCoin()">Подбросить!</button>
+    </div>
+</div>
+
+<!-- Экран статистики -->
+<div class="screen" id="stats-screen">
+    <h2>📊 Статистика</h2>
+    <div id="statsContainer"></div>
+</div>
+
+<!-- Экран ежедневных заданий -->
+<div class="screen" id="daily-screen">
+    <h2>📅 Ежедневные задания</h2>
+    <p style="color:#94a3b8;margin-bottom:20px">Выполняйте задания и получайте награды!</p>
+    <div id="dailyTasksContainer"></div>
+</div>
